@@ -43,4 +43,10 @@ class Tamagotchi
     end
   end
 
+  def play()
+    unless @activity_level == 10
+      set_activity_level(@activity_level + 1)
+    end
+  end
+
 end

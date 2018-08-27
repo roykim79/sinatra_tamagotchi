@@ -90,4 +90,23 @@ describe Tamagotchi  do
       expect(@my_pet.sleep_level()).to eq(9)
     end
   end
+
+  describe "#play" do
+    it "increases the activity level by 1 with a maximum of 10" do
+      @my_pet.play()
+      expect(@my_pet.activity_level()).to eq(10)
+    end
+
+    it "increases the activity level by 1 with a maximum of 10" do
+      @my_pet.time_passes(1)
+      @my_pet.play()
+      expect(@my_pet.activity_level()).to eq(10)
+    end
+
+    it "increases the activity level by 1 with a maximum of 10" do
+      @my_pet.time_passes(2)
+      @my_pet.play()
+      expect(@my_pet.activity_level()).to eq(9)
+    end
+  end
 end
