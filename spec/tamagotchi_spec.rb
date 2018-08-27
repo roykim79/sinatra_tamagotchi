@@ -2,21 +2,20 @@ require 'rspec'
 require 'tamagotchi'
 
 describe Tamagotchi  do
+  before :each do
+    @my_pet = Tamagotchi.new("lil dragon")
+  end
+
   describe "#initialize"  do
     it "sets the name and life levels of a new Tamagotchi"  do
-      my_pet = Tamagotchi.new("lil dragon")
-      expect(my_pet.name()).to eq("lil dragon")
-      expect(my_pet.food_level()).to eq(10)
-      expect(my_pet.sleep_level()).to eq(10)
-      expect(my_pet.activity_level()).to eq(10)
+      expect(@my_pet.name()).to eq("lil dragon")
+      expect(@my_pet.food_level()).to eq(10)
+      expect(@my_pet.sleep_level()).to eq(10)
+      expect(@my_pet.activity_level()).to eq(10)
     end
   end
 
   describe "#is_alive" do
-    before :each do
-      @my_pet = Tamagotchi.new("lil dragon")
-    end
-
     it "is alive if the food level is above 0" do
       expect(@my_pet.is_alive()).to eq(true)
     end
@@ -38,10 +37,6 @@ describe Tamagotchi  do
   end
 
   describe "#time_passes" do
-    before :each do
-      @my_pet = Tamagotchi.new("lil dragon")
-    end
-
     it "decreases the amount of food the Tamagotchi has left by the number of units passed in" do
       @my_pet.time_passes(1)  #decide what trigger you will use to make time pass
       expect(@my_pet.food_level()).to eq(9)
@@ -59,10 +54,6 @@ describe Tamagotchi  do
   end
 
   describe "#feed" do
-    before :each do
-      @my_pet = Tamagotchi.new("lil dragon")
-    end
-
     it "increases the food level by 1 with a maximum of 10" do
       @my_pet.feed()
       expect(@my_pet.food_level()).to eq(10)
@@ -80,4 +71,5 @@ describe Tamagotchi  do
       expect(@my_pet.food_level()).to eq(9)
     end
   end
+
 end
