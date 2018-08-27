@@ -49,5 +49,11 @@ describe Tamagotchi  do
       my_pet.time_passes()
       expect(my_pet.sleep_level()).to eq(9)
     end
+
+    it "descreases the amout of activity the Tamagotchi has left by 1" do
+      my_pet = Tamagotchi.new("lil dragon")
+      my_pet.time_passes()
+      expect(my_pet.activity_level()).to eq(9)
+    end
   end
 end

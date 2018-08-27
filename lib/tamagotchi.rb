@@ -27,5 +27,6 @@ class Tamagotchi
   def time_passes()
     @food_level -= 1
     @sleep_level -= 1
+    @activity_level -= 1
   end
 end
