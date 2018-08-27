@@ -47,7 +47,7 @@ describe Tamagotchi  do
     it "decreases the amount of sleep the Tamagotchi has left by 1" do
       my_pet = Tamagotchi.new("lil dragon")
       my_pet.time_passes()
-      expect(my_pet.food_level()).to eq(9)
+      expect(my_pet.sleep_level()).to eq(9)
     end
   end
 end
