@@ -70,6 +70,19 @@ describe Tamagotchi  do
       @my_pet.eat()
       expect(@my_pet.food_level()).to eq(9)
     end
+
+    it "will not increase the food level if it is not alive" do
+      @my_pet.set_food_level(0)
+      @my_pet.eat()
+      expect(@my_pet.food_level).to eq(0)
+    end
+
+    it "will not increase the food level if it is not alive" do
+      @my_pet.set_food_level(9)
+      @my_pet.set_sleep_level(0)
+      @my_pet.eat()
+      expect(@my_pet.food_level).to eq(9)
+    end
   end
 
   describe "#sleep" do
@@ -89,6 +102,19 @@ describe Tamagotchi  do
       @my_pet.sleep()
       expect(@my_pet.sleep_level()).to eq(9)
     end
+
+    it "will not increase the sleep level if it is not alive" do
+      @my_pet.set_sleep_level(0)
+      @my_pet.sleep()
+      expect(@my_pet.sleep_level).to eq(0)
+    end
+
+    it "will not increase the sleep level if it is not alive" do
+      @my_pet.set_sleep_level(9)
+      @my_pet.set_food_level(0)
+      @my_pet.sleep()
+      expect(@my_pet.sleep_level).to eq(9)
+    end
   end
 
   describe "#play" do
@@ -107,6 +133,19 @@ describe Tamagotchi  do
       @my_pet.time_passes(2)
       @my_pet.play()
       expect(@my_pet.activity_level()).to eq(9)
+    end
+
+    it "will not increase the activity level if it is not alive" do
+      @my_pet.set_activity_level(0)
+      @my_pet.play()
+      expect(@my_pet.activity_level).to eq(0)
+    end
+
+    it "will not increase the activity level if it is not alive" do
+      @my_pet.set_activity_level(8)
+      @my_pet.set_sleep_level(0)
+      @my_pet.play()
+      expect(@my_pet.activity_level).to eq(8)
     end
   end
 end

@@ -32,20 +32,26 @@ class Tamagotchi
   end
 
   def eat()
-    unless @food_level == 10
-      set_food_level(@food_level + 1)
+    if is_alive()
+      unless @food_level == 10
+        set_food_level(@food_level + 1)
+      end
     end
   end
 
   def sleep()
-    unless @sleep_level == 10
-      set_sleep_level(@sleep_level + 1)
+    if is_alive()
+      unless @sleep_level == 10
+        set_sleep_level(@sleep_level + 1)
+      end
     end
   end
 
   def play()
-    unless @activity_level == 10
-      set_activity_level(@activity_level + 1)
+    if is_alive()
+      unless @activity_level == 10
+        set_activity_level(@activity_level + 1)
+      end
     end
   end
 
