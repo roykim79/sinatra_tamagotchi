@@ -53,23 +53,41 @@ describe Tamagotchi  do
     end
   end
 
-  describe "#feed" do
+  describe "#eat" do
     it "increases the food level by 1 with a maximum of 10" do
-      @my_pet.feed()
+      @my_pet.eat()
       expect(@my_pet.food_level()).to eq(10)
     end
 
     it "increases the food level by 1 with a maximum of 10" do
       @my_pet.time_passes(1)
-      @my_pet.feed()
+      @my_pet.eat()
       expect(@my_pet.food_level()).to eq(10)
     end
 
     it "increases the food level by 1 with a maximum of 10" do
       @my_pet.time_passes(2)
-      @my_pet.feed()
+      @my_pet.eat()
       expect(@my_pet.food_level()).to eq(9)
     end
   end
 
+  describe "#sleep" do
+    it "increases the sleep level by 1 with a maximum of 10" do
+      @my_pet.sleep()
+      expect(@my_pet.sleep_level()).to eq(10)
+    end
+
+    it "increases the sleep level by 1 with a maximum of 10" do
+      @my_pet.time_passes(1)
+      @my_pet.sleep()
+      expect(@my_pet.sleep_level()).to eq(10)
+    end
+
+    it "increases the sleep level by 1 with a maximum of 10" do
+      @my_pet.time_passes(2)
+      @my_pet.sleep()
+      expect(@my_pet.sleep_level()).to eq(9)
+    end
+  end
 end

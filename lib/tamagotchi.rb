@@ -31,9 +31,15 @@ class Tamagotchi
     set_activity_level(@activity_level - units)
   end
 
-  def feed()
+  def eat()
     unless @food_level == 10
       set_food_level(@food_level + 1)
+    end
+  end
+
+  def sleep()
+    unless @sleep_level == 10
+      set_sleep_level(@sleep_level + 1)
     end
   end
 
