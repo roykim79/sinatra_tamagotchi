@@ -6,6 +6,7 @@ class Tamagotchi
     @food_level = 10
     @sleep_level = 10
     @activity_level = 10
+    @last_updated = Time.new()
   end
 
   def is_alive()
@@ -29,4 +30,11 @@ class Tamagotchi
     set_sleep_level(@sleep_level - units)
     set_activity_level(@activity_level - units)
   end
+
+  def feed()
+    unless @food_level == 10
+      set_food_level(@food_level + 1)
+    end
+  end
+
 end

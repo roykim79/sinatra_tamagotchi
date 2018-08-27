@@ -57,4 +57,27 @@ describe Tamagotchi  do
       expect(@my_pet.activity_level()).to eq(7)
     end
   end
+
+  describe "#feed" do
+    before :each do
+      @my_pet = Tamagotchi.new("lil dragon")
+    end
+
+    it "increases the food level by 1 with a maximum of 10" do
+      @my_pet.feed()
+      expect(@my_pet.food_level()).to eq(10)
+    end
+
+    it "increases the food level by 1 with a maximum of 10" do
+      @my_pet.time_passes(1)
+      @my_pet.feed()
+      expect(@my_pet.food_level()).to eq(10)
+    end
+
+    it "increases the food level by 1 with a maximum of 10" do
+      @my_pet.time_passes(2)
+      @my_pet.feed()
+      expect(@my_pet.food_level()).to eq(9)
+    end
+  end
 end
