@@ -24,9 +24,9 @@ class Tamagotchi
     @activity_level = level
   end
 
-  def time_passes()
-    set_food_level(@food_level - 1)
-    set_sleep_level(@sleep_level - 1)
-    set_activity_level(@activity_level - 1)
+  def time_passes(units)
+    set_food_level(@food_level - units)
+    set_sleep_level(@sleep_level - units)
+    set_activity_level(@activity_level - units)
   end
 end
