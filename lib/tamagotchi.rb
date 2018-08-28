@@ -1,4 +1,5 @@
 class Tamagotchi
+  @@pets = []
   attr_accessor :name, :food_level, :sleep_level, :activity_level, :last_updated
 
   def initialize(name)
@@ -7,6 +8,18 @@ class Tamagotchi
     @sleep_level = 10
     @activity_level = 10
     @last_updated = Time.new()
+  end
+
+  def save()
+    @@pets.push(self)
+  end
+
+  def self.all()
+    @@pets
+  end
+
+  def self.clear()
+    @@pets = []
   end
 
   def is_alive()

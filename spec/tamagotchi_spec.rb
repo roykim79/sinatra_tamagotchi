@@ -3,6 +3,7 @@ require 'tamagotchi'
 
 describe Tamagotchi  do
   before :each do
+    Tamagotchi.clear()
     @my_pet = Tamagotchi.new("lil dragon")
   end
 
@@ -212,6 +213,27 @@ describe Tamagotchi  do
       update_at = (@my_pet.last_updated() + 30)
       @my_pet.update_vitals(update_at)
       expect(@my_pet.last_updated()).to eq(update_at)
+    end
+  end
+
+  describe ".all" do
+    it "is empty at first" do
+      expect(Tamagotchi.all()).to eq([])
+    end
+  end
+
+  describe "#save" do
+    it "adds new Tamagotchi to the pets list" do
+      @my_pet.save()
+      expect(Tamagotchi.all()).to eq([@my_pet])
+    end
+  end
+
+  describe ".clear" do
+    it "empties the pets list" do
+      @my_pet.save()
+      Tamagotchi.clear()
+      expect(Tamagotchi.all()).to eq([])
     end
   end
 end
