@@ -201,5 +201,17 @@ describe Tamagotchi  do
       expect(@my_pet.sleep_level).to eq(8)
       expect(@my_pet.activity_level).to eq(8)
     end
+
+    it "will update last_updated to update_at time rounded down to the nearest 10 seconds" do
+      update_at = (@my_pet.last_updated() + 21)
+      @my_pet.update_vitals(update_at)
+      expect(@my_pet.last_updated()).to eq(update_at - 1)
+    end
+
+    it "will update last_updated to update_at time rounded down to the nearest 10 seconds" do
+      update_at = (@my_pet.last_updated() + 30)
+      @my_pet.update_vitals(update_at)
+      expect(@my_pet.last_updated()).to eq(update_at)
+    end
   end
 end
