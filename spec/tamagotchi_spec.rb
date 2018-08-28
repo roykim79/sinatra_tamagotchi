@@ -26,6 +26,16 @@ describe Tamagotchi  do
       @my_pet.set_food_level(7)
       expect(@my_pet.food_level()).to eq(7)
     end
+
+    it "will not go below 0" do
+      @my_pet.set_food_level(-10)
+      expect(@my_pet.food_level()).to eq(0)
+    end
+
+    it "will not go above 10" do
+      @my_pet.set_food_level(190)
+      expect(@my_pet.food_level()).to eq(10)
+    end
   end
 
   describe "#set_sleep_level" do
@@ -38,6 +48,16 @@ describe Tamagotchi  do
       @my_pet.set_sleep_level(4)
       expect(@my_pet.sleep_level()).to eq(4)
     end
+
+    it "will not go below 0" do
+      @my_pet.set_sleep_level(-10)
+      expect(@my_pet.sleep_level()).to eq(0)
+    end
+
+    it "will not go above 10" do
+      @my_pet.set_sleep_level(190)
+      expect(@my_pet.sleep_level()).to eq(10)
+    end
   end
 
   describe "#set_activity_level" do
@@ -49,6 +69,16 @@ describe Tamagotchi  do
     it "changes the activity level to the level passed in as a parameter" do
       @my_pet.set_activity_level(3)
       expect(@my_pet.activity_level()).to eq(3)
+    end
+
+    it "will not go below 0" do
+      @my_pet.set_activity_level(-10)
+      expect(@my_pet.activity_level()).to eq (0)
+    end
+
+    it "will not go above 10" do
+      @my_pet.set_activity_level(200)
+      expect(@my_pet.activity_level()).to eq (10)
     end
   end
 
@@ -193,29 +223,29 @@ describe Tamagotchi  do
   end
 
   describe "#update_vitals" do
-    it "will lower the vitals by 1 for every 10 seconds that have passed" do
-      update_at = (@my_pet.last_updated() + 10)
+    it "will lower the vitals by 1 for every 1 seconds that have passed" do
+      update_at = (@my_pet.last_updated() + 1)
       @my_pet.update_vitals(update_at)
       expect(@my_pet.food_level).to eq(9)
       expect(@my_pet.sleep_level).to eq(9)
       expect(@my_pet.activity_level).to eq(9)
     end
 
-    it "will lower the vitals by 1 for every 10 seconds that have passed" do
-      update_at = (@my_pet.last_updated() + 21)
+    it "will lower the vitals by 1 for every 1 seconds that have passed" do
+      update_at = (@my_pet.last_updated() + 2)
       @my_pet.update_vitals(update_at)
       expect(@my_pet.food_level).to eq(8)
       expect(@my_pet.sleep_level).to eq(8)
       expect(@my_pet.activity_level).to eq(8)
     end
 
-    it "will update last_updated to update_at time rounded down to the nearest 10 seconds" do
-      update_at = (@my_pet.last_updated() + 21)
+    it "will update last_updated to update_at time" do
+      update_at = (@my_pet.last_updated())
       @my_pet.update_vitals(update_at)
-      expect(@my_pet.last_updated()).to eq(update_at - 1)
+      expect(@my_pet.last_updated()).to eq(update_at)
     end
 
-    it "will update last_updated to update_at time rounded down to the nearest 10 seconds" do
+    it "will update last_updated to update_at time" do
       update_at = (@my_pet.last_updated() + 30)
       @my_pet.update_vitals(update_at)
       expect(@my_pet.last_updated()).to eq(update_at)

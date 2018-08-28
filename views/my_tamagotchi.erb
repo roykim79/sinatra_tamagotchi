@@ -5,7 +5,7 @@
   <li class="list-group-item activity-level">Activity: <%= @my_pet.activity_level %></li>
 </ul>
 <% if @my_pet.is_alive %>
-<ul class="list-group">
+<ul class="list-group actions">
   <li class="list-group-item pet-eat">
     <a href="/my_pet/<%= @my_pet.id %>/eat">Feed me</a>
   </li>
