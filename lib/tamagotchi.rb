@@ -1,5 +1,5 @@
 class Tamagotchi
-  attr_accessor :name, :food_level, :sleep_level, :activity_level
+  attr_accessor :name, :food_level, :sleep_level, :activity_level, :last_updated
 
   def initialize(name)
     @name = name
@@ -55,4 +55,10 @@ class Tamagotchi
     end
   end
 
+  def update_vitals(time)
+    unit_size = 10
+    units_passed = ((time - @last_updated)/unit_size).floor
+    time_passes(units_passed)
+    @last_updated = (@last_updated + (unit_size * units_passed))
+  end
 end

@@ -15,6 +15,42 @@ describe Tamagotchi  do
     end
   end
 
+  describe "#set_food_level" do
+    it "changes the food level to the level passed in as a parameter" do
+      @my_pet.set_food_level(8)
+      expect(@my_pet.food_level()).to eq(8)
+    end
+
+    it "changes the food level to the level passed in as a parameter" do
+      @my_pet.set_food_level(7)
+      expect(@my_pet.food_level()).to eq(7)
+    end
+  end
+
+  describe "#set_sleep_level" do
+    it "changes the sleep level to the level passed in as a parameter" do
+      @my_pet.set_sleep_level(9)
+      expect(@my_pet.sleep_level()).to eq(9)
+    end
+
+    it "changes the sleep level to the level passed in as a parameter" do
+      @my_pet.set_sleep_level(4)
+      expect(@my_pet.sleep_level()).to eq(4)
+    end
+  end
+
+  describe "#set_activity_level" do
+    it "changes the activity level to the level passed in as a parameter" do
+      @my_pet.set_activity_level(7)
+      expect(@my_pet.activity_level()).to eq(7)
+    end
+
+    it "changes the activity level to the level passed in as a parameter" do
+      @my_pet.set_activity_level(3)
+      expect(@my_pet.activity_level()).to eq(3)
+    end
+  end
+
   describe "#is_alive" do
     it "is alive if the food level is above 0" do
       expect(@my_pet.is_alive()).to eq(true)
@@ -38,7 +74,7 @@ describe Tamagotchi  do
 
   describe "#time_passes" do
     it "decreases the amount of food the Tamagotchi has left by the number of units passed in" do
-      @my_pet.time_passes(1)  #decide what trigger you will use to make time pass
+      @my_pet.time_passes(1)
       expect(@my_pet.food_level()).to eq(9)
     end
 
@@ -145,6 +181,24 @@ describe Tamagotchi  do
       @my_pet.set_activity_level(8)
       @my_pet.set_sleep_level(0)
       @my_pet.play()
+      expect(@my_pet.activity_level).to eq(8)
+    end
+  end
+
+  describe "#update_vitals" do
+    it "will lower the vitals by 1 for every 10 seconds that have passed" do
+      update_at = (@my_pet.last_updated() + 10)
+      @my_pet.update_vitals(update_at)
+      expect(@my_pet.food_level).to eq(9)
+      expect(@my_pet.sleep_level).to eq(9)
+      expect(@my_pet.activity_level).to eq(9)
+    end
+
+    it "will lower the vitals by 1 for every 10 seconds that have passed" do
+      update_at = (@my_pet.last_updated() + 21)
+      @my_pet.update_vitals(update_at)
+      expect(@my_pet.food_level).to eq(8)
+      expect(@my_pet.sleep_level).to eq(8)
       expect(@my_pet.activity_level).to eq(8)
     end
   end
