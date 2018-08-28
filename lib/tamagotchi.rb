@@ -1,6 +1,6 @@
 class Tamagotchi
   @@pets = []
-  attr_accessor :name, :food_level, :sleep_level, :activity_level, :last_updated
+  attr_accessor :name, :food_level, :sleep_level, :activity_level, :last_updated, :id
 
   def initialize(name)
     @name = name
@@ -8,6 +8,7 @@ class Tamagotchi
     @sleep_level = 10
     @activity_level = 10
     @last_updated = Time.new()
+    @id = @@pets.length + 1
   end
 
   def save()
@@ -20,6 +21,10 @@ class Tamagotchi
 
   def self.clear()
     @@pets = []
+  end
+
+  def self.find(id)
+    (@@pets.select {|pet| pet.id() == id})[0]
   end
 
   def is_alive()

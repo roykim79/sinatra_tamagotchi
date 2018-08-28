@@ -236,4 +236,11 @@ describe Tamagotchi  do
       expect(Tamagotchi.all()).to eq([])
     end
   end
+
+  describe ".find" do
+    it "returns an instance by it's id" do
+      @my_pet.save()
+      expect(Tamagotchi.find(@my_pet.id())).to eq(@my_pet)
+    end
+  end
 end
