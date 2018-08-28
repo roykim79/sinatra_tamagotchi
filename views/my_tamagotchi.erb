@@ -1,6 +1,9 @@
-<h1>Hi, I'm <%= @my_pet.name %></h1>
+<h1>Hi, I'm <a href="/my_pet/<%= @my_pet.id %>"><%= @my_pet.name %></a> </h1>
 <ul class="list-group">
   <li class="list-group-item">Food: <%= @my_pet.food_level %></li>
   <li class="list-group-item">Sleep: <%= @my_pet.sleep_level %></li>
   <li class="list-group-item">Activity: <%= @my_pet.activity_level %></li>
 </ul>
+<% unless @my_pet.is_alive() %>
+  <h2><%= @my_pet.name %> is gone. You have been neglectful</h2>
+<% end %>

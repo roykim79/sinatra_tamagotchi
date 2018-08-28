@@ -88,6 +88,12 @@ describe Tamagotchi  do
       @my_pet.time_passes(3)
       expect(@my_pet.activity_level()).to eq(7)
     end
+
+    it "will not change any levels if the pet is not alive" do
+      @my_pet.set_food_level(0)
+      @my_pet.time_passes(1)
+      expect(@my_pet.food_level()).to eq(0)
+    end
   end
 
   describe "#eat" do

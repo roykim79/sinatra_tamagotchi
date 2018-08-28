@@ -8,7 +8,7 @@ class Tamagotchi
     @sleep_level = 10
     @activity_level = 10
     @last_updated = Time.new()
-    @id = @@pets.length + 1
+    @id = @@pets.length
   end
 
   def save()
@@ -44,9 +44,11 @@ class Tamagotchi
   end
 
   def time_passes(units)
-    set_food_level(@food_level - units)
-    set_sleep_level(@sleep_level - units)
-    set_activity_level(@activity_level - units)
+    if is_alive()
+      set_food_level(@food_level - units)
+      set_sleep_level(@sleep_level - units)
+      set_activity_level(@activity_level - units)
+    end
   end
 
   def eat()
